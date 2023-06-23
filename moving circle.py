@@ -1,8 +1,12 @@
 import pygame
 import sys
+import pyvjoy
 
 # Initialize Pygame
 pygame.init()
+
+# Initialize vJoy device
+joystick = pyvjoy.VJoyDevice(1)
 
 # Set up some constants
 WIDTH, HEIGHT = 800, 600
@@ -19,7 +23,7 @@ window.fill(BACKGROUND_COLOR)
 font = pygame.font.Font(None, 36)
 
 # Initial position of the circle
-circle_position = (WIDTH // 2, HEIGHT // 2)
+circle_position = [WIDTH // 2, HEIGHT // 2]
 
 # Flag for mouse button down
 dragging = False
@@ -37,11 +41,15 @@ while True:
             dragging = False
 
         elif event.type == pygame.MOUSEMOTION and dragging:
-            new_position = event.pos
+            new_position = list(event.pos)
 
             # Make sure the circle stays within the window
             if CIRCLE_RADIUS <= new_position[0] <= WIDTH - CIRCLE_RADIUS and CIRCLE_RADIUS <= new_position[1] <= HEIGHT - CIRCLE_RADIUS:
                 circle_position = new_position
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                circle_position = [WIDTH // 2, HEIGHT // 2]
 
     # Redraw the background and the circle
     window.fill(BACKGROUND_COLOR)
@@ -56,5 +64,10 @@ while True:
 
     # Blit the text onto the window
     window.blit(text_surface, (10, 10))
+
+    # Send the displacement to the vJoy joystick
+    # vJoy's set_axis method requires a value between 1 and 32768, so we need to rescale the displacement
+    joystick.set_axis(pyvjoy.HID_USAGE_X, int(displacement[0] / 100 * 16384 + 16384))
+    joystick.set_axis(pyvjoy.HID_USAGE_Y, int(displacement[1] / 100 * 16384 + 16384))
 
     pygame.display.flip()
