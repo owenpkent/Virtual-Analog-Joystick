@@ -5,4 +5,6 @@
 
  Install universal controller remapper from https://github.com/evilC/UCR/releases and run UCR.exe\
 
- 
+ ![virtual joystick gui](image.png)
+
+ ![UCR gui](image-1.png)
