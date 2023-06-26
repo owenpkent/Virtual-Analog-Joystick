@@ -1,4 +1,8 @@
 # Virtual Analog Joystick
  Install vJoy and run vJoyConfig.exe to configure vJoy device.\ 
- Run moving circle.py
- Install universal controller remapper and run UCR.exe\
+
+ Run virtual analog joystick.py to start the program.\
+
+ Install universal controller remapper from https://github.com/evilC/UCR/releases and run UCR.exe\
+
+ 
