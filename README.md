@@ -5,6 +5,8 @@
 
  Install universal controller remapper from https://github.com/evilC/UCR/releases and run UCR.exe\
 
+ Click and drag the center circle to move the joystick.\
+
  ![virtual joystick gui](image.png)
 
  ![UCR gui](image-1.png)
