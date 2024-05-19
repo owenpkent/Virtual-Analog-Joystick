@@ -1,5 +1,5 @@
 # Virtual Analog Joystick
- Install vJoy and run vJoyConfig.exe to configure vJoy device.\ 
+ Install vJoy and run "C:\Program Files\vJoy\x64\vJoyConf.exe" to configure vJoy device.\ 
 
  Run virtual analog joystick.py to start the program.\
 
